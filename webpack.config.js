@@ -1,7 +1,8 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: "development", // Set to 'production' for optimized build
+  mode: "production", // Set to 'production' for optimized build
   entry: "./src/index.js", // Your app's entry point
   output: {
     filename: "main.bundle.js",
@@ -21,4 +22,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html", // Path to your existing index.html
+      filename: "index.html", // Output filename for the copied HTML
+      path: path.resolve(__dirname, "dist"),
+    }),
+  ],
 };
